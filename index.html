@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>割って余ってリバース！ 10進数→2進数の変換</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>割って余ってリバース！<br>10進数→2進数の変換</h1>
+    <div class="input-area">
+      <label for="decimal">10進数を入力：</label>
+      <input id="decimal" type="number" min="0" max="1024" placeholder="例:23">
+      <button id="convert">変換</button>
+    </div>
+    <button class="detail-btn" id="show-principle">基数変換の原理</button>
+    <button class="detail-btn" id="show-exponent">指数と基数の関係</button>
+    <table id="steps" aria-label="変換ステップ">
+      <thead>
+        <tr><th>割り算式</th><th>商</th><th>余り</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="result" id="binary"></div>
+    <div class="explanation" id="explanation"></div>
+  </div>
+
+  <!-- 基数変換原理モーダル -->
+  <div class="overlay" id="overlay-principle">
+    <div class="modal">
+      <button class="close-btn" data-overlay="overlay-principle">×</button>
+      <h2>基数変換の原理</h2>
+      <p>
+        任意の10進数nを2進数で表すには、2の各桁（2<sup>0</sup>、2<sup>1</sup>、2<sup>2</sup>…）の組み合わせでnを再現します。<br>
+        割り算を用いると、nを2で割った余りはnの最下位ビット（2<sup>0</sup>）の値を示します。<br>
+        その商をさらに2で割ることで、次のビット（2<sup>1</sup>、2<sup>2</sup>…）の値が順に取得でき、<br>
+        余りを逆順に読むと各ビットの高位から順に並び、2進表現が得られます。
+      </p>
+    </div>
+  </div>
+
+  <!-- 指数と基数の関係モーダル -->
+  <div class="overlay" id="overlay-exponent">
+    <div class="modal">
+      <button class="close-btn" data-overlay="overlay-exponent">×</button>
+      <h2>指数と基数の関係</h2>
+      <p>
+        「b<sup>k</sup>」は「基数bをk回かけた値」を意味します。
+      </p>
+      <p>
+        例として、2の累乗を考えます。<br>
+        2<sup>1</sup> = 2<br>
+        2<sup>2</sup> = 2 × 2 = 4<br>
+        2<sup>3</sup> = 2 × 2 × 2 = 8<br>
+        <br>
+        指数が1上がるごとに「2倍」、逆に1下がると「1/2倍」となり、<br>
+        2<sup>0</sup>は 2<sup>1</sup> の「1/2」で「1」となります。
+      </p>
+      <p>
+        この考え方はすべての数に当てはまり、<br>
+        どんな基数nでも <b>n<sup>0</sup> = 1</b> です。
+      </p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
