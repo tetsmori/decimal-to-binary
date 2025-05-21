@@ -63,7 +63,7 @@ function animateConversion(n) {
 function showResult(steps, original) {
   const bits = steps.map(s => s.r).reverse();
   tbody.querySelectorAll('tr').forEach(tr => tr.classList.remove('highlight'));
-  binaryDiv.innerHTML = `${original}₁₀ = ` + bits.map((b, i) => `<span class='bit' data-index='${i}'>${b}</span>`).join('');
+  binaryDiv.innerHTML = `${original}₁₀ = ` + bits.map((b, i) => `<span class='bit' data-index='${i}'>${b}</span>`).join('') + `₂`;
   explanation.innerHTML = `ビットをクリックすると、各桁の重みを説明します。`;
   document.querySelectorAll('.bit').forEach(span => {
     span.addEventListener('click', () => {
